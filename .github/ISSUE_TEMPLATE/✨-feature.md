@@ -1,9 +1,10 @@
 ---
 name: "✨ Feature"
 about: 새로운 기능 추가
-title: "[feat]"
+title: "[feat] "
 labels: "✨feature"
 assignees: ''
+type: Feature
 
 ---
 
