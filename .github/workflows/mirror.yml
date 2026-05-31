@@ -2,7 +2,7 @@ name: Mirror to Personal Repo for Vercel Free
 
 on:
   push:
-    branches: ["develop"] # 팀에서 배포 기준으로 쓰는 브랜치명 (main 또는 master)
+    branches: ["main"] # 팀에서 배포 기준으로 쓰는 브랜치명 (main 또는 master)
 
 jobs:
   git-mirror:
