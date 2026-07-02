@@ -1,5 +1,6 @@
 export type ExhibitionStatus =
   | "CONSENT_WRITING"
+  | "CONSENT_EXPIRED"
   | "SCHEDULED"
   | "ONGOING"
   | "COMPLETED"

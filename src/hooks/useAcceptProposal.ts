@@ -2,6 +2,7 @@
 
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 
+import { exhibitionStatusListKey } from "@/hooks/useExhibitions";
 import { acceptProposal } from "@/services/proposalApi";
 import type { AcceptProposalResult } from "@/types/proposal";
 
@@ -10,9 +11,10 @@ export function useAcceptProposal() {
 
   return useMutation<AcceptProposalResult, Error, number>({
     mutationFn: id => acceptProposal(id),
-    // 수락 시 같은 방 다른 제안이 EXPIRED 되므로 모든 제안 캐시를 invalidate(형제 카드도 갱신).
+    // 수락 시 전시/동의서가 생성되고, 같은 방 다른 제안도 EXPIRED 된다.
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ["proposal"] });
+      void queryClient.invalidateQueries({ queryKey: ["proposal"] });
+      void queryClient.invalidateQueries({ queryKey: exhibitionStatusListKey() });
     },
   });
 }

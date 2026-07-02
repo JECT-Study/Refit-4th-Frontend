@@ -1,5 +1,6 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 
+import { exhibitionDetailKey, exhibitionStatusListKey } from "@/hooks/useExhibitions";
 import {
   getExhibitionConsent,
   getReadonlyExhibitionConsent,
@@ -14,14 +15,6 @@ import type {
 
 export function exhibitionConsentKey(exhibitionId: number, readonly = false) {
   return ["exhibition", "consent", exhibitionId, readonly ? "readonly" : "write"] as const;
-}
-
-export function exhibitionStatusListKey() {
-  return ["exhibition", "status", "list"] as const;
-}
-
-export function exhibitionDetailKey(exhibitionId: number) {
-  return ["exhibition", "detail", exhibitionId] as const;
 }
 
 export function useExhibitionConsent(exhibitionId?: number, readonly = false) {

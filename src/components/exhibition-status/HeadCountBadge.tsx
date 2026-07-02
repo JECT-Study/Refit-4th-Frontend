@@ -1,9 +1,11 @@
+import Image from "next/image";
+
 import { useExhibitionConsent } from "@/hooks/useExhibitionConsent";
 import type { ExhibitionListItem, ExhibitionStatus } from "@/types/exhibition";
-import Image from "next/image";
 
 const STATUS_LABEL: Record<ExhibitionStatus, string> = {
   CONSENT_WRITING: "동의서 작성 중",
+  CONSENT_EXPIRED: "동의 만료",
   SCHEDULED: "전시 예정",
   ONGOING: "전시 중",
   COMPLETED: "전시 완료",

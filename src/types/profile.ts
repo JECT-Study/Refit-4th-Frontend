@@ -47,7 +47,13 @@ export interface Activity {
   spaceName: string | null;
   startDate: string;
   endDate: string;
-  status: "SCHEDULED" | "ONGOING" | "COMPLETED" | "CANCELED" | "CONSENT_WRITING";
+  status:
+    | "SCHEDULED"
+    | "ONGOING"
+    | "COMPLETED"
+    | "CANCELED"
+    | "CONSENT_WRITING"
+    | "CONSENT_EXPIRED";
   thumbnailUrl: string | null;
   period: string;
   location: string;

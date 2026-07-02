@@ -2,6 +2,7 @@ import type { ExhibitionStatus } from "@/types/exhibition";
 
 const STATUS_LABEL: Record<ExhibitionStatus, string> = {
   CONSENT_WRITING: "동의서 작성 중",
+  CONSENT_EXPIRED: "동의 만료",
   SCHEDULED: "전시 예정",
   ONGOING: "전시 중",
   COMPLETED: "전시 완료",
@@ -10,6 +11,7 @@ const STATUS_LABEL: Record<ExhibitionStatus, string> = {
 
 const STATUS_STYLE: Record<ExhibitionStatus, string> = {
   CONSENT_WRITING: "bg-object-secondary text-text-invert",
+  CONSENT_EXPIRED: "bg-object-secondary-light text-text-secondary",
   SCHEDULED: "bg-object-tertiary-light text-text-tertiary",
   ONGOING: "bg-object-primary-light text-text-primary-brand",
   COMPLETED: "bg-object-secondary-light text-text-primary",
