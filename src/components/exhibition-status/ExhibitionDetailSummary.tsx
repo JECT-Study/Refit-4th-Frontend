@@ -1,8 +1,4 @@
-import { CalendarDays, Images, MapPin } from "lucide-react";
-
-import ExhibitionStatusBadge from "@/components/exhibition-status/ExhibitionStatusBadge";
 import type { ExhibitionDetail, ExhibitionStatus } from "@/types/exhibition";
-import { normalizeImageUrl } from "@/utils/normalizeImageUrl";
 
 interface ExhibitionDetailSummaryProps {
   exhibition: ExhibitionDetail;
@@ -16,6 +12,10 @@ function formatDate(value: string) {
 const STATUS_INFO: Record<ExhibitionStatus, { label: string; color: string }> = {
   CONSENT_WRITING: {
     label: "동의서 작성 중",
+    color: "text-text-secondary",
+  },
+  CONSENT_EXPIRED: {
+    label: "동의 만료",
     color: "text-text-secondary",
   },
   SCHEDULED: {

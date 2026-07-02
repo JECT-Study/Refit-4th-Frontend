@@ -10,10 +10,8 @@ import type {
   ExhibitionStatusFilter,
 } from "@/types/exhibition";
 
-export function exhibitionStatusListKey(filter?: ExhibitionStatusFilter) {
-  return filter
-    ? (["exhibition", "status", "list", filter] as const)
-    : (["exhibition", "status", "list"] as const);
+export function exhibitionStatusListKey() {
+  return ["exhibitions"] as const;
 }
 
 export function exhibitionDetailKey(exhibitionId: number) {
