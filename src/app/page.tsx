@@ -2,12 +2,16 @@
 
 import { useState } from "react";
 
+import { Plus } from "lucide-react";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 
 import Tabs from "@/components/common/Tab";
+import AboutService from "@/components/contents/AboutService";
 import ArtTab from "@/components/home/ArtTab";
 import RecommendTab from "@/components/home/RecommendTab";
 import SpaceTab from "@/components/home/SpaceTab";
+import { useMyRole } from "@/hooks/useMyRole";
 import {
   useArtworkFeed,
   useArtworkRecommendation,
@@ -16,10 +20,6 @@ import {
 } from "@/hooks/usePublicFeeds";
 import type { ArtworkFeedItem, FeedCardItem, SpaceFeedItem } from "@/types/feed";
 import { normalizeImageUrl } from "@/utils/normalizeImageUrl";
-import { useMyRole } from "@/hooks/useMyRole";
-import { Plus } from "lucide-react";
-import { useRouter } from "next/navigation";
-import AboutService from "@/components/contents/AboutService";
 
 const tabs = [
   { label: "추천", value: "recommend" },
@@ -85,10 +85,11 @@ export default function Home() {
       {/* 배너 */}
       <section className="px-5">
         <div className="flex items-center justify-between">
-          <div className="text-title-3 text-text-primary font-semibold">
-            <div>지금 나에게 핏한</div>
-            <div>전시 매칭</div>
-          </div>
+          <h1 className="text-title-3 text-text-primary font-semibold">
+            <span className="block">리핏 ReFit</span>
+            <span className="block">지금 나에게 핏한</span>
+            <span className="block">전시 매칭</span>
+          </h1>
           <Image src="/home-icon.svg" alt="홈 아이콘" width={134} height={88} />
         </div>
       </section>
