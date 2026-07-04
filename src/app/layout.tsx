@@ -3,18 +3,66 @@ import { Suspense } from "react";
 import type { Metadata } from "next";
 import { Alata } from "next/font/google";
 import localFont from "next/font/local";
+import Script from "next/script";
 
 import Navbar from "@/components/common/Navbar";
 import ScrollManager from "@/components/common/ScrollManager";
+import {
+  SITE_ALTERNATE_NAMES,
+  SITE_DESCRIPTION,
+  SITE_KEYWORDS,
+  SITE_NAME,
+  SITE_TITLE,
+  SITE_URL,
+} from "@/constants/seo";
 
 import Providers from "./providers";
 
 import "./globals.css";
-import Script from "next/script";
 
 export const metadata: Metadata = {
-  title: "ReFit",
-  description: "묵혀둔 작품을 꺼내어, 가장 핏한 공간과의 매칭",
+  metadataBase: new URL(SITE_URL),
+  applicationName: SITE_NAME,
+  title: {
+    default: SITE_TITLE,
+    template: `%s | ${SITE_NAME}`,
+  },
+  description: SITE_DESCRIPTION,
+  keywords: SITE_KEYWORDS,
+  alternates: {
+    canonical: "/",
+  },
+  openGraph: {
+    title: SITE_TITLE,
+    description: SITE_DESCRIPTION,
+    url: "/",
+    siteName: SITE_NAME,
+    locale: "ko_KR",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: SITE_TITLE,
+    description: SITE_DESCRIPTION,
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+    },
+  },
+};
+
+const websiteJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  name: "리핏",
+  alternateName: SITE_ALTERNATE_NAMES,
+  url: SITE_URL,
+  description: SITE_DESCRIPTION,
+  inLanguage: ["ko-KR", "en"],
 };
 
 const pretendard = localFont({
@@ -36,10 +84,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${pretendard.className} ${alata.variable} h-full antialiased`}>
+    <html lang="ko" className={`${pretendard.className} ${alata.variable} h-full antialiased`}>
       {/* <body className="flex min-h-full flex-col"> */}
       <body>
         <div className="mobile:w-97.5 mx-auto min-h-screen w-full bg-white">
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd) }}
+          />
           <Providers>{children}</Providers>
           <Suspense fallback={null}>
             <ScrollManager />
