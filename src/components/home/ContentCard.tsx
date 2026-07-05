@@ -6,13 +6,21 @@ import { normalizeImageUrl } from "@/utils/normalizeImageUrl";
 
 interface ContentCardProps {
   title: string;
+  priority?: boolean;
   imageUrl?: string | null;
   author?: string | null;
   type?: string | null;
   href?: string;
 }
 
-export default function ContentCard({ title, imageUrl, author, type, href }: ContentCardProps) {
+export default function ContentCard({
+  title,
+  priority,
+  imageUrl,
+  author,
+  type,
+  href,
+}: ContentCardProps) {
   const displayImageUrl = normalizeImageUrl(imageUrl);
 
   const content = (
@@ -23,8 +31,8 @@ export default function ContentCard({ title, imageUrl, author, type, href }: Con
           <Image
             src={displayImageUrl}
             alt={title}
+            priority={priority}
             fill
-            unoptimized
             className="object-cover"
             sizes="168px"
           />

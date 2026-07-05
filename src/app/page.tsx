@@ -85,12 +85,12 @@ export default function Home() {
       {/* 배너 */}
       <section className="px-5">
         <div className="flex items-center justify-between">
-          <h1 className="text-title-3 text-text-primary font-semibold">
-            <span className="block">리핏 ReFit</span>
-            <span className="block">지금 나에게 핏한</span>
-            <span className="block">전시 매칭</span>
-          </h1>
-          <Image src="/home-icon.svg" alt="홈 아이콘" width={134} height={88} />
+          <div className="text-title-3 text-text-primary font-semibold">
+            <div>리핏 ReFit</div>
+            <div>지금 나에게 핏한</div>
+            <div>전시 매칭</div>
+          </div>
+          <Image src="/home-icon.svg" alt="홈 아이콘" width={134} height={88} priority />
         </div>
       </section>
       {/* 탭 */}
