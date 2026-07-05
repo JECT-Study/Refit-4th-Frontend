@@ -8,7 +8,12 @@ const backendOrigin = process.env.BACKEND_ORIGIN ?? "http://localhost:8080";
 
 const nextConfig: NextConfig = {
   images: {
-    unoptimized: true,
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "df3vavn6x749m.cloudfront.net",
+      },
+    ],
   },
   async rewrites() {
     return [{ source: "/api/:path*", destination: `${backendOrigin}/api/:path*` }];

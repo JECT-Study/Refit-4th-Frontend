@@ -91,9 +91,10 @@ export default function RecommendTab({
             </div>
           ) : (
             <div className="flex gap-2.5 overflow-x-auto px-5 pb-4 [&::-webkit-scrollbar]:hidden">
-              {artData.slice(0, 8).map(artwork => (
+              {artData.slice(0, 8).map((artwork, index) => (
                 <ContentCard
                   key={artwork.id}
+                  priority={index < 3}
                   title={artwork.title}
                   imageUrl={artwork.imageUrl}
                   href={artwork.href}
@@ -130,9 +131,10 @@ export default function RecommendTab({
             </div>
           ) : (
             <div className="flex gap-2.5 overflow-x-auto px-5 pb-4 [&::-webkit-scrollbar]:hidden">
-              {spaceData.slice(0, 8).map(space => (
+              {spaceData.slice(0, 8).map((space, index) => (
                 <ContentCard
                   key={space.id}
+                  priority={index < 3}
                   title={space.title}
                   imageUrl={space.imageUrl}
                   href={space.href}
